@@ -1,0 +1,28 @@
+﻿<Window x:Class="XlsCsvToInsert.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XlsCsvToInsert"
+        mc:Ignorable="d"
+        Title="XlsOrCsvToInsert" Height="500" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="47*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Upload" HorizontalAlignment="Left" Margin="321,401,0,0" VerticalAlignment="Top" Width="184" Height="48" Click="Button_Click_1" Grid.Column="1"/>
+        <Button Content="Gen SQL" HorizontalAlignment="Left" Margin="520,401,0,0" VerticalAlignment="Top" Width="184" Height="48" Click="Button_Click" Grid.Column="1"/>
+        <DataGrid x:Name="Table" Grid.ColumnSpan="2" Margin="27,25,27,256"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="125,334,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.485,0.599" x:Name="DropDown" SelectionChanged="DropDown_SelectionChanged" Height="23"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="0,334,0,0" TextWrapping="Wrap" Text="Col" VerticalAlignment="Top" Width="120" x:Name="ColName" LostFocus="ColName_LostFocus" Height="18"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="0,286,0,0" TextWrapping="Wrap"  Text="yyyy-MM-dd" VerticalAlignment="Top" Width="120" x:Name="DateTimeFormat" Height="19"/>
+        <Label Grid.Column="1" Content="Settings" HorizontalAlignment="Left" Margin="0,233,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold"/>
+        <Label Grid.Column="1" Content="DateTime format" HorizontalAlignment="Left" Margin="0,258,0,0" VerticalAlignment="Top" Width="99" Height="28"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="321,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" Height="107" x:Name="SampleQuery"/>
+        <Label Grid.Column="1" Content="Rename column" HorizontalAlignment="Left" Margin="0,305,0,0" VerticalAlignment="Top" Height="28"/>
+        <Label Grid.Column="1" Content="Example query" HorizontalAlignment="Left" Margin="321,237,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
