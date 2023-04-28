@@ -19,9 +19,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using XlsCsvToInsert.Approval.BaseApprovals;
-using XlsCsvToInsert.Approval.StringDateTimeApproval;
-using XlsCsvToInsert.Approval.StringNumberApproval;
 
 namespace XlsCsvToInsert
 {
@@ -34,18 +31,18 @@ namespace XlsCsvToInsert
 
         private string lastTableName { get; set; }
 
-        private static CharApproval NumberHandler = new CharApproval().SetNext(new Num_StringNumberApproval()).SetNext(new Trailing_StringNumberApproval());
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private static char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
         private bool isNumeric(string value)
         {
-            foreach(var c in value.ToCharArray())
+            foreach (var c in value.ToCharArray())
             {
-                if (!NumberHandler.Handle(c)) return false;
+                if (!numbers.Contains(c) && c != '.') return false;
             }
 
             return true;
@@ -76,7 +73,7 @@ namespace XlsCsvToInsert
                         {
                             var value = row[col2Find];
                             if (value is DateTime) stringBuilder.Append("'" + ((DateTime.Parse(value.ToString()))).ToString(DateTimeFormat.Text) + "'");
-                            else if (value is string && new StringApproval().SetNext(new AMPM_StringDateTimeApproval()).Handle(value.ToString())) stringBuilder.Append("'" + ((DateTime.Parse(value.ToString()))).ToString(DateTimeFormat.Text) + "'");
+                            else if (value is string && (value.ToString().Contains(" AM") || value.ToString().Contains(" PM"))) stringBuilder.Append("'" + ((DateTime.Parse(value.ToString()))).ToString(DateTimeFormat.Text) + "'");
                             else if (value is string && !isNumeric(value.ToString())) stringBuilder.Append("'" + value.ToString() + "'");
                             else stringBuilder.Append(value.ToString());
                         }

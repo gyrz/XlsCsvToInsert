@@ -9,8 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using XlsCsvToInsert.Approval.BaseApprovals;
-using XlsCsvToInsert.Approval.StringDateTimeApproval;
 
 namespace XlsCsvToInsert
 {
